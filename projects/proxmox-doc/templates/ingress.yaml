@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: proxmox-ingress
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    traefik.ingress.kubernetes.io/redirection-entry-point: https
+    traefik.ingress.kubernetes.io/redirect-permanent: "true"
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+  labels:
+    name: proxmox-ingress
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: {{ .Values.proxmox.host }}
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: proxmox
+                port:
+                  number: {{ .Values.service.externalPort }}

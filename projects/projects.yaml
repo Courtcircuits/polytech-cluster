@@ -39,4 +39,23 @@ spec:
       prune: true
       selfHeal: true
 ---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: proxmox
+  namespace: services
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/Courtcircuits/polytech-cluster"
+    path: projects/proxmox-doc
+    targetRevision: HEAD
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: services
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
 
