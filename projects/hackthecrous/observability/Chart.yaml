@@ -22,6 +22,9 @@ dependencies:
     alias: loki
     version: 6.24.0
     repository: https://grafana.github.io/helm-charts
+  - name: grafana
+    alias: grafana
+    version: 8.8.2
 
 
 # This is the version number of the application being deployed. This version number should be

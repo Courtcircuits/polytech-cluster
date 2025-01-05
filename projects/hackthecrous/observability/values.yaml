@@ -54,3 +54,11 @@ loki:
     replicas: 0
   bloomGateway:
     replicas: 0
+
+grafana:
+  ingress:
+    enabled: true
+    hosts: 
+      - "grafana.hackthecrous.com"
+    ingressClassName: "traefik"
+
