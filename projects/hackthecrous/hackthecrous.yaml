@@ -69,7 +69,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: hackthecrous-services
+  name: hackthecrous-observability
   namespace: services
 spec:
   project: hackthecrous
