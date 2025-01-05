@@ -63,3 +63,25 @@ spec:
       prune: true
       selfHeal: true
 ---
+#################
+# observability #
+#################
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hackthecrous-services
+  namespace: services
+spec:
+  project: hackthecrous
+  source:
+    repoURL: "https://github.com/Courtcircuits/polytech-cluster"
+    path: projects/hackthecrous/observability
+    targetRevision: HEAD
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: hackthecrous
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
